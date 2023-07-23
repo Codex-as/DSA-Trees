@@ -1,0 +1,22 @@
+class Solution {
+    // Function to return the diameter of a Binary Tree.
+    int diameter(Node root) {
+        if(root == null) return 0;
+        int dleft = diameter(root.left);
+        int dright = diameter(root.right);
+        
+        //height
+        int leftheight = heightMeasure(root.left);
+        int rightheight = heightMeasure(root.right);
+        
+        int height = leftheight + rightheight + 1;
+        return Math.max( height ,Math.max(dleft , dright));
+        
+    }
+    int heightMeasure(Node root){
+        if(root == null) return 0;
+        int lh = heightMeasure(root.left);
+        int rh = heightMeasure(root.right);
+        return Math.max(lh ,rh) + 1;
+    }
+}
